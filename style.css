@@ -60,7 +60,7 @@ section.center,#s-cover{text-align:center}
 body.calm *{animation:none!important;transition:none!important}
 
 /* ---- v4 ---- */
-:root{--v:1}
+:root{--v:2}
 .tone0{--c1:#0887F5;--c2:#24B5EF;background:linear-gradient(135deg,#e6f2ff,#cfe5ff);border-color:#7CB8F0}
 .tone1{--c1:#a850d6;--c2:#C97BF0;background:linear-gradient(135deg,#f8eaff,#ecd5ff);border-color:#C97BF0}
 .tone2{--c1:#6f62d6;--c2:#9589EB;background:linear-gradient(135deg,#eeebff,#dcd7ff);border-color:#9589EB}
@@ -124,3 +124,16 @@ button.week.lit .spark{filter:none;opacity:1;animation:pop .6s}
 .heart{margin-top:10px}.heart textarea{width:100%;padding:10px;border:2px solid var(--bd);border-radius:12px;font:inherit}
 .bigheart{font-family:var(--f-note);font-size:1.6rem;color:#a850d6;margin:6px 0}
 @media (max-width:640px){.cmpRow{grid-template-columns:1fr}.cmpHead{flex-direction:row;gap:10px}}
+/* ---- v2 ---- */
+.coverImg,.coverImg.small{width:auto;height:auto;max-width:100%;max-height:52vh;margin:0 auto;object-fit:contain;object-position:center}
+.coverImg.small{max-height:60vh}
+.imgrv img{width:auto;height:auto;max-width:100%;max-height:62vh;margin:0 auto;object-fit:contain}
+.mapLayout{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start}
+.mapbox{height:64vh;min-height:360px;border-radius:18px;border:2px solid var(--bd);overflow:hidden;background:#dbe9f7}
+.rlist{max-height:64vh;overflow:auto;display:grid;gap:6px}
+.ritem{text-align:left;background:#fff;color:var(--ink);border:2px solid var(--bd);box-shadow:none;padding:8px 10px;min-height:0}
+.ritem.hl,.ritem.sel{background:linear-gradient(135deg,#e4efff,#f1dcff);border-color:var(--p);transform:translateX(4px)}
+.ritem.noloc{opacity:.75;border-style:dashed}
+.rnum{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #1c2347;color:#1c2347;font:800 12px/20px var(--f-body);text-align:center}
+.ctry{font:800 11px/16px var(--f-body);color:#1c2347;opacity:.6;text-transform:uppercase;letter-spacing:.06em;text-align:center;text-shadow:0 0 3px #fff,0 0 3px #fff;white-space:nowrap}
+@media (max-width:800px){.mapLayout{grid-template-columns:1fr}.rlist{max-height:none}.mapbox{height:52vh}}
