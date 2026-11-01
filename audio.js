@@ -1,10 +1,22 @@
 let ctx, muted = false, clickAudio = null;
 export const isMuted = () => muted;
 export const setMuted = (v) => { muted = v; };
-export function setClickSound(src) { clickAudio = new Audio(src); clickAudio.preload = 'auto'; }
+let clickSrc = null;
+export function setClickSound(src) { clickSrc = src; const a = new Audio(src); a.preload = 'auto'; a.addEventListener('error', () => console.warn('No se encontró el sonido de clic:', src)); }
+function drop() {
+  try {
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator(), g = ctx.createGain(), t = ctx.currentTime;
+    o.type = 'sine'; o.frequency.setValueAtTime(950, t); o.frequency.exponentialRampToValueAtTime(320, t + 0.12);
+    g.gain.setValueAtTime(0.09, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+    o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.16);
+  } catch (e) { /* audio no disponible */ }
+}
 export function click() {
-  if (muted || !clickAudio) return;
-  const a = clickAudio.cloneNode(); a.volume = 0.7; a.play().catch(() => {});
+  if (muted || !clickSrc) return;
+  const a = new Audio(clickSrc); a.volume = 0.7;
+  a.addEventListener('error', drop, { once: true });
+  a.play().catch(drop);
 }
 function tone(freq, at, dur, type = 'sine', vol = 0.08) {
   if (muted) return;
