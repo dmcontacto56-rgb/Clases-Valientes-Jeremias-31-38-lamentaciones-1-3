@@ -1,0 +1,90 @@
+{
+"meta":{"logo":"Nuevo-Simbolo-de-la-Iglesia.webp","clickSound":"gota-de-agua.mp3","cover":"jeremias por rembrandt.jpg","agradar":"Agradar a Dios.jpeg","cisterna":"Jeremias en la cisterna.jpeg","mapa":"Mapa compárativo.jpeg"},
+"cards":[
+{"ref":"Jeremías 31:3","title":"¡Un amor que dura para siempre!","desc":"El Padre Celestial y Jesús nos aman «con amor eterno». Eterno significa que no se acaba.","q":"¿Qué cosas duran mucho tiempo y cuáles no? ¿Cuándo has sentido el amor de Dios?","link":"Conexión: el juego «¿Dura o se acaba?» de la siguiente página.","app":"Esta semana, cuéntale a alguien cómo has sentido el amor del Padre Celestial."},
+{"ref":"Jeremías 31:13","title":"¡Del llanto a la alegría!","desc":"Jehová reconoce el «llanto y lloro amargo» de Israel en el cautiverio, pero también promete: «Cambiaré su duelo en gozo».","q":"¿Cuándo has pasado de estar triste a estar contento? ¿Quién te ayudó?","link":"Conexión: Lamentaciones 3:22–26 también habla de esperanza en medio del dolor.","app":"Busca a alguien triste esta semana y llévale un poco de alegría."},
+{"ref":"Jeremías 31:31–34","title":"Una ley escrita en el corazón","desc":"El Señor promete un nuevo convenio: «Pondré mi ley en su mente, y la escribiré en su corazón». Requiere más que aparentar ser dedicados.","q":"¿Qué significa tener la ley de Dios escrita en el corazón? ¿Qué promesas hiciste en tu bautismo?","link":"Conexión: Mosíah 18:10, 13 (el convenio del bautismo) y Jeremías 32:40 (convenio sempiterno).","app":"Escribe abajo una promesa que quieras guardar en el corazón.","heart":true},
+{"ref":"Jeremías 33:15","title":"¡Después de las ruinas, se puede edificar!","desc":"Jehová llamó a Jeremías a «arrancar y destruir», pero también a «edificar y plantar» (1:10). El «Renuevo de justicia» (33:15) es el Mesías prometido.","q":"Si el pecado o la adversidad dejan en ruinas una vida, ¿cómo se vuelve a edificar?","link":"Según el material de la clase, la respuesta es Jesucristo: Él trae el nuevo convenio.","app":"Piensa en algo que quieras «volver a edificar» y pídele ayuda a Jesús."},
+{"ref":"Jeremías 36","title":"¡Las Escrituras me apartan del mal!","desc":"Jehová mandó a Jeremías registrar sus profecías (36:2–3). Baruc las escribió y las leyó; Jehudí y el rey Joacim reaccionaron muy distinto (36:20–26).","q":"¿Cómo se sintió cada persona frente a las profecías? ¿Qué hace especiales a las Escrituras?","link":"Hagamos movimientos: escribir en un libro (36:4) y leer al pueblo (36:8, 10).","app":"Elige un versículo especial y compártelo con tu familia."},
+{"ref":"Jeremías 37–39","title":"Sedequías: ¿creer o no creer?","desc":"El rey Sedequías conversó con Jeremías (37:15–21; 38:14–28), pero no siguió al profeta. Jeremías 39 muestra lo que pasó.","q":"¿Qué evidencia ves de que Sedequías creía que Jeremías era profeta? ¿Y de que no creía?","link":"Compara con la familia de Lehi en 1 Nefi 1–2.","app":"¿Qué haces tú para demostrar que sigues al profeta actual?"},
+{"ref":"Jeremías 38:6–13","title":"¡Ebed-melec, el valiente!","desc":"Echaron a Jeremías a una cisterna con cieno. Ebed-melec, un siervo etíope del rey, valientemente ayudó a sacarlo. Después Jehová le prometió: «te libraré… porque tuviste confianza en mí» (39:17–18).","q":"¿Qué te llama la atención de lo que hizo Ebed-melec? ¿Cómo puedes seguir su ejemplo?","link":"Conexión: Jeremías 39:15–18 y la imagen «Ciertamente te libraré».","app":"Defiende a alguien esta semana: una palabra amable puede ser un acto de valentía."},
+{"ref":"Lamentaciones 3:22–26","title":"¡Misericordias nuevas cada mañana!","desc":"Lamentaciones son poemas escritos después de la destrucción de Jerusalén. En medio del dolor aparece la esperanza: «Nuevas son cada mañana; grande es tu fidelidad».","q":"¿Qué encuentras aquí sobre el perdón de Jesucristo? ¿Cuándo te sentiste triste por una mala decisión?","link":"Conexión: Mateo 5:4; Santiago 4:8–10; Alma 36:17–20.","app":"Cada mañana de esta semana, agradece una cosa «nueva» que Dios te dio."}
+],
+"dura":[
+{"s":"🪙 Una moneda de metal","a":true,"e":"Dura muchísimo tiempo."},
+{"s":"🍎 Una fruta","a":false,"e":"Se echa a perder pronto."},
+{"s":"🪨 Una roca grande","a":true,"e":"Dura miles de años."},
+{"s":"🍦 Un helado al sol","a":false,"e":"¡Se derrite en minutos!"}
+],
+"compare":{
+"filters":["Todo","Pruebas","Dios con ellos","Final"],
+"rows":[
+{"icon":"🕳️","topic":"Los echaron a un hueco","tag":"Pruebas","j":"Sus hermanos lo echaron a un pozo y lo vendieron (Génesis 37:23–28).","e":"Funcionarios del rey lo echaron a una cisterna con cieno, donde habría muerto de hambre (Jeremías 38:6)."},
+{"icon":"🔒","topic":"Terminaron presos","tag":"Pruebas","j":"Fue acusado falsamente y puesto en la cárcel (Génesis 39:20).","e":"Fue golpeado, puesto en el cepo y encarcelado (Jeremías 20:2; 37:15)."},
+{"icon":"🤝","topic":"Dios estaba con ellos","tag":"Dios con ellos","j":"«Jehová estaba con José» (Génesis 39:2–3).","e":"Dios le prometió: «yo estoy contigo… para librarte» (Jeremías 1:19)."},
+{"icon":"🦸","topic":"Alguien valiente ayudó","tag":"Dios con ellos","j":"Dios lo puso en posición de salvar a su familia del hambre (Génesis 45:5–7).","e":"Ebed-melec, un etíope, lo sacó de la cisterna (Jeremías 38:7–13) y Dios lo bendijo (39:15–18)."},
+{"icon":"👑","topic":"¿Cómo terminó su historia?","tag":"Final","j":"Llegó a gobernar Egipto; solo el Faraón estaba sobre él.","e":"No llegó a ser gobernante. Vio caer Jerusalén y, según el artículo de la clase anterior, se cree que murió en Egipto. La Biblia no narra su muerte."},
+{"icon":"💛","topic":"Su mensaje de esperanza","tag":"Final","j":"Perdonó: «Dios lo encaminó a bien» (Génesis 50:20).","e":"Anunció: «Cambiaré su duelo en gozo» y un nuevo convenio (Jeremías 31:13, 31–33)."}
+],
+"close":"Los dos confiaron en Dios aun sin entender todo. Y los dos nos señalan al Salvador, la verdadera fuente de sanación y esperanza."
+},
+"map":{
+"intro":"Jeremías 21 y 25 hablan de naciones que enfrentarían guerra y juicio. El encabezado de Jeremías 25 en tu edición dice: «Varias naciones serán derribadas — En los últimos días, todos los habitantes de la tierra estarán en guerra».",
+"disc":"Las fronteras políticas actuales no existían en tiempos bíblicos. Las regiones históricas se representan de forma aproximada y algunas identificaciones geográficas continúan siendo debatidas.",
+"conf":[
+{"k":"bien","l":"Identificación bien establecida","c":"#16a05a"},
+{"k":"aprox","l":"Ubicación aproximada","c":"#0887F5"},
+{"k":"deb","l":"Identificación debatida","c":"#e09a00"},
+{"k":"desc","l":"Ubicación desconocida","c":"#7a7f95"}],
+"regions":[
+{"n":1,"name":"Judá y Jerusalén","v":"Jeremías 25:18","m":"Jerusalén y la región histórica de Judá","k":"bien","t":"Centro político y religioso de Judá."},
+{"n":2,"name":"Egipto y Faraón","v":"Jeremías 25:19","m":"Egipto","k":"bien","t":"Las fronteras del Egipto antiguo no coinciden exactamente con las actuales."},
+{"n":3,"name":"Mezcla de naciones y tierra de Uz","v":"Jeremías 25:20","m":"Debatida; entorno de Edom y Arabia","k":"deb","t":"No hay consenso para fijar un lugar único."},
+{"n":4,"name":"Filistea (Ascalón, Gaza, Ecrón, Asdod)","v":"Jeremías 25:20","m":"Costa sur de Israel y Gaza","k":"bien","t":"Ciudades filisteas identificadas."},
+{"n":5,"name":"Edom","v":"Jeremías 25:21","m":"Sur de Jordania y zonas cercanas","k":"aprox","t":"Región aproximada."},
+{"n":6,"name":"Moab","v":"Jeremías 25:21","m":"Jordania, al este del mar Muerto","k":"aprox","t":"Antiguo reino al este del mar Muerto."},
+{"n":7,"name":"Amón","v":"Jeremías 25:21","m":"Zona de Amán, Jordania","k":"aprox","t":"El reino fue más amplio que la ciudad moderna."},
+{"n":8,"name":"Tiro y Sidón","v":"Jeremías 25:22","m":"Costa del Líbano","k":"bien","t":"Ciudades fenicias."},
+{"n":9,"name":"Islas al otro lado del mar","v":"Jeremías 25:22","m":"Posiblemente Chipre, sin asumir que sea la única","k":"deb","t":"La expresión puede abarcar varias islas y costas."},
+{"n":10,"name":"Dedán","v":"Jeremías 25:23","m":"Zona de AlUla, Arabia Saudita","k":"aprox","t":"Asociada con el noroeste de Arabia."},
+{"n":11,"name":"Tema","v":"Jeremías 25:23","m":"Tayma, Arabia Saudita","k":"bien","t":"Antiguo oasis de Arabia."},
+{"n":12,"name":"Buz","v":"Jeremías 25:23","m":"Sin ubicación confirmada","k":"deb","t":"No se asigna un punto porque no es seguro."},
+{"n":13,"name":"Arabia y pueblos del desierto","v":"Jeremías 25:24","m":"Península arábiga","k":"aprox","t":"Región extensa; no tiene fronteras precisas."},
+{"n":14,"name":"Zimri","v":"Jeremías 25:25","m":"Ubicación desconocida","k":"desc","t":"No debe asignarse a un país moderno sin evidencia."},
+{"n":15,"name":"Elam","v":"Jeremías 25:25","m":"Suroeste de Irán (región de Susa)","k":"bien","t":"Antigua entidad política."},
+{"n":16,"name":"Media","v":"Jeremías 25:25","m":"Noroeste de Irán y zonas cercanas","k":"aprox","t":"Sus límites cambiaron con el tiempo."},
+{"n":17,"name":"Reyes del norte","v":"Jeremías 25:26","m":"Zonas de Turquía, Siria y Mesopotamia (aprox.)","k":"aprox","t":"Reinos antiguos del norte, cercanos y lejanos."},
+{"n":18,"name":"Sesac","v":"Jeremías 25:26","m":"Tradicionalmente identificado con Babilonia (Irak)","k":"deb","t":"Que Sesac sea Babilonia es una identificación tradicional; la ubicación de Babilonia sí está bien establecida."}
+]},
+"tf":[
+{"s":"Jeremías 31:13: Dios promete cambiar el duelo en gozo.","a":true,"e":"Verdadero: «Cambiaré su duelo en gozo»."},
+{"s":"Jeremías fue echado a una cisterna con cieno (Jeremías 38:6).","a":true,"e":"Verdadero: se hundió en el cieno."},
+{"s":"Nadie ayudó a Jeremías en la cisterna.","a":false,"e":"Falso: Ebed-melec, el etíope, valientemente ayudó a sacarlo."},
+{"s":"Los hermanos de José lo echaron a un pozo (Génesis 37).","a":true,"e":"Verdadero (Génesis 37:23–28)."},
+{"s":"El nuevo convenio solo requiere aparentar ser dedicados.","a":false,"e":"Falso: la ley de Dios debe estar en la mente y escrita en el corazón."},
+{"s":"Lamentaciones 3:23 dice que las misericordias de Dios son nuevas cada mañana.","a":true,"e":"Verdadero: «Nuevas son cada mañana; grande es tu fidelidad»."},
+{"s":"Las fronteras de los países actuales son idénticas a las de las naciones de Jeremías 25.","a":false,"e":"Falso: las fronteras actuales no existían en tiempos bíblicos."}
+],
+"match":[
+["💗 Escrito en el corazón","El nuevo convenio (Jeremías 31:33)"],
+["🕳️ Cisterna con cieno","Donde echaron a Jeremías (Jeremías 38:6)"],
+["🤝 Ebed-melec","El etíope valiente que ayudó a rescatar al profeta"],
+["🌅 Cada mañana","Misericordias nuevas (Lamentaciones 3:23)"],
+["📜 Baruc","Escribió las profecías de Jeremías (Jeremías 36:4)"],
+["🌿 Renuevo de justicia","Jesucristo, el Mesías prometido (Jeremías 33:15)"]
+],
+"apply":[
+{"s":"Estás esperando algo importante y se tarda mucho. Te desanimas.","o":[{"t":"Sigo orando cada día","r":"Esperar en Dios no es quedarse quieto: es seguir confiando. ¿Qué podrías agradecerle mientras esperas? (Lamentaciones 3:25)"},{"t":"Hablo con alguien de confianza","r":"Compartir ayuda a cargar el peso. ¿Con quién podrías hablar y qué le dirías?"},{"t":"Me rindo","r":"Rendirse tienta cuando cansa esperar. Dios promete cambiar el duelo en gozo (Jeremías 31:13). ¿Qué primer paso pequeño podrías dar hoy?"}]},
+{"s":"Un familiar te trató mal y sigues enojado.","o":[{"t":"Lo ignoro","r":"Ignorar puede calmar un rato, pero el enojo se queda. José decidió perdonar (Génesis 50:20). ¿Qué pasaría si dieras un pequeño paso hacia el perdón?"},{"t":"Le hablo con calma","r":"Hablar con calma abre puertas. ¿Qué dirías primero?"},{"t":"Pido ayuda al Salvador","r":"Él es la fuente de sanación. ¿Cómo podrías pedírselo hoy en una oración?"}]},
+{"s":"Ves que alguien es tratado injustamente, y defenderlo no es popular.","o":[{"t":"Me quedo callado","r":"A veces da miedo hablar. Ebed-melec habló aunque era arriesgado. ¿Qué podrías hacer, aunque sea pequeño?"},{"t":"Lo defiendo con amabilidad","r":"Eso fue lo que hizo Ebed-melec. ¿Cómo te sentirías después?"},{"t":"Busco a un adulto","r":"Pedir ayuda a un adulto también es valiente. ¿A quién acudirías?"}]}
+],
+"week":[
+"Domingo: lee Lamentaciones 3:22–26 y escribe algo nuevo que agradeces cada mañana.",
+"Lunes: busca tres objetos que duren mucho y piensa en el amor eterno de Dios (Jeremías 31:3).",
+"Martes: escribe en un corazón una promesa que hiciste a Dios (Jeremías 31:33).",
+"Miércoles: lee Jeremías 38:6–13 y haz algo valiente y amable por alguien.",
+"Jueves: comparte con tu familia un pasaje de las Escrituras que sea especial para ti.",
+"Viernes: piensa en alguien a quien perdonar, como José (Génesis 50:20).",
+"Sábado: canta o escucha un himno y busca cómo el Señor te consuela."
+]
+}
