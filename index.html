@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <header class="top">
@@ -21,23 +22,12 @@
 <div id="bar" class="bar"></div>
 <main id="stage">
 
-<section id="s-logo" data-title="Inicio" data-time="Bienvenida"><img class="logoFull" id="logoTop" alt="Símbolo de La Iglesia de Jesucristo de los Santos de los Últimos Días"></section>
-
 <section id="s-cover" data-title="Portada" data-time="1 min">
   <img class="coverImg" id="coverImg" alt="Jeremías lamenta la destrucción de Jerusalén, por Rembrandt van Rijn">
   <p class="cap">Jeremías lamenta la destrucción de Jerusalén, por Rembrandt van Rijn</p>
   <h1 class="t"><span class="c1">Cambiaré</span> <span class="c3">su duelo</span> <span class="c2">en gozo</span></h1>
   <p class="note" style="text-align:center">Jeremías 31–33; 36–39 · Lamentaciones 1; 3</p>
   <p style="text-align:center"><button id="goBtn" class="big">🎉 ¡Comencemos!</button></p>
-</section>
-
-<section id="s-lam" data-title="Agradar a Dios" data-time="3 min">
-  <div class="head"><h2 class="t"><span class="c3">Agradar a Dios:</span> <span class="c1">¡esperar en Él!</span></h2><button class="rs">↺ Reiniciar</button></div>
-  <div class="card tone2 verseHead"><span class="note">Lamentaciones 3:25</span><h3>«Bueno es Jehová para los que en él esperan, para el alma que le busca».</h3></div>
-  <div class="card tone3 rv imgrv" id="agrBox" tabindex="0" role="button" aria-label="Revelar la imagen"><img class="blurtxt" id="agrImg" alt="Agradar a Dios"></div>
-  <p class="note hint">👆 Toca la imagen para revelarla</p>
-  <div class="card tone0"><p><b>Contexto:</b> el libro de Lamentaciones son poemas escritos después de la destrucción de Jerusalén y de su templo.</p>
-  <p class="note">¿Qué ves en la imagen? ¿Qué significa «esperar» en el Señor? ¿Cómo agradamos a Dios mientras esperamos?</p></div>
 </section>
 
 <section id="s-cards" data-title="Escrituras" data-time="8 min">
@@ -66,9 +56,10 @@
   <div class="head"><h2 class="t"><span class="c3">El mapa de</span> <span class="c1">las naciones:</span> <span class="c2">Jeremías 21 y 25</span></h2><button class="rs">↺ Reiniciar</button></div>
   <div class="card tone3"><p id="mapIntro"></p>
   <p><b>Jeremías 21:5, 7:</b> Jehová dice que peleará contra Jerusalén y que entregará a Sedequías en manos de Nabucodonosor, rey de Babilonia.</p></div>
-  <div class="card mapwrap" id="mapWrap" title="Toca para ampliar"><img id="mapImg" alt="Mapa comparativo de Jeremías 25:18–26 con las fronteras actuales"></div>
-  <p class="note">Toca el mapa para ampliarlo. Toca un número para conocer la región.</p>
-  <div id="mchips" class="chips"></div><div id="rgrid" class="grid"></div><div id="rdet" class="card rev" aria-live="polite"></div>
+  <p class="note">Pasa el cursor (o toca) sobre el mapa o la lista para resaltar cada región.</p>
+  <div id="mchips" class="chips"></div>
+  <div class="mapLayout"><div id="map" class="mapbox" aria-label="Mapa interactivo de las naciones de Jeremías 25"></div><div id="rlist" class="rlist"></div></div>
+  <div id="rdet" class="card rev" aria-live="polite"></div>
   <p class="cap" id="mapDisc"></p>
 </section>
 
@@ -89,6 +80,15 @@
   <p class="note">Aquí nadie se equivoca: platicamos cómo podemos elegir mejor.</p>
 </section>
 
+<section id="s-lam" data-title="Agradar a Dios" data-time="3 min">
+  <div class="head"><h2 class="t"><span class="c3">Agradar a Dios:</span> <span class="c1">¡esperar en Él!</span></h2><button class="rs">↺ Reiniciar</button></div>
+  <div class="card tone2 verseHead"><span class="note">Lamentaciones 3:25</span><h3>«Bueno es Jehová para los que en él esperan, para el alma que le busca».</h3></div>
+  <div class="card tone3 rv imgrv" id="agrBox" tabindex="0" role="button" aria-label="Revelar la imagen"><img class="blurtxt" id="agrImg" alt="Agradar a Dios"></div>
+  <p class="note hint">👆 Toca la imagen para revelarla</p>
+  <div class="card tone0"><p><b>Contexto:</b> el libro de Lamentaciones son poemas escritos después de la destrucción de Jerusalén y de su templo.</p>
+  <p class="note">¿Qué ves en la imagen? ¿Qué significa «esperar» en el Señor? ¿Cómo agradamos a Dios mientras esperamos?</p></div>
+</section>
+
 <section id="s-week" data-title="Misión semanal" data-time="1 min">
   <div class="head"><h2 class="t"><span class="c3">Misión</span> <span class="c1">de la semana:</span> <span class="c2">¡cambia tu duelo en gozo!</span></h2><button class="rs">↺ Reiniciar</button></div>
   <p class="note">Sugerencias para la semana (no son parte de las Escrituras). Toca las que cumplas.</p>
@@ -103,7 +103,8 @@
   <button id="next">Siguiente ▶</button>
 </nav>
 <canvas id="fx" aria-hidden="true"></canvas>
-<script type="module" src="main.js?v=1"></script>
-<script>addEventListener('load',()=>setTimeout(()=>{const m=[];if(getComputedStyle(document.documentElement).getPropertyValue('--v').trim()!=='1')m.push('style.css');if(window.__app!==1)m.push('main.js');if(m.length){const d=document.createElement('div');d.style.cssText='position:fixed;z-index:99;left:8px;right:8px;top:70px;background:#fff3cd;border:2px solid #e0a800;padding:10px;border-radius:12px;font:700 14px sans-serif;color:#222';d.textContent='⚠ Archivos desactualizados o ausentes: '+m.join(', ')+'. Súbelos y recarga con Ctrl+Shift+R.';document.body.append(d)}},2500))</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module" src="main.js?v=2"></script>
+<script>addEventListener('load',()=>setTimeout(()=>{const m=[];if(getComputedStyle(document.documentElement).getPropertyValue('--v').trim()!=='2')m.push('style.css');if(window.__app!==2)m.push('main.js');if(m.length){const d=document.createElement('div');d.style.cssText='position:fixed;z-index:99;left:8px;right:8px;top:70px;background:#fff3cd;border:2px solid #e0a800;padding:10px;border-radius:12px;font:700 14px sans-serif;color:#222';d.textContent='⚠ Archivos desactualizados o ausentes: '+m.join(', ')+'. Súbelos y recarga con Ctrl+Shift+R.';document.body.append(d)}},2500))</script>
 </body>
 </html>
