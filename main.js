@@ -1,6 +1,6 @@
-import { setClickSound, click, cheer, fanfare, giggle, sparkle, oops, setMuted, isMuted } from './audio.js?v=1';
-import { confettiFrom, shake } from './effects.js?v=1';
-import { initCursor } from './cursor.js?v=1';
+import { setClickSound, click, cheer, fanfare, giggle, sparkle, oops, setMuted, isMuted } from './audio.js?v=2';
+import { confettiFrom, shake } from './effects.js?v=2';
+import { initCursor } from './cursor.js?v=2';
 
 const $ = (s, r = document) => r.querySelector(s);
 const h = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
@@ -8,7 +8,7 @@ const shuffle = a => [...a].sort(() => Math.random() - .5);
 const U = encodeURI;
 const inits = {};
 const sections = [...document.querySelectorAll('main section')];
-let cur = 0;
+let cur = 0, mapObj = null;
 
 function reveal(el) {
   const open = () => { if (el.classList.contains('unblur')) return; el.classList.add('unblur'); confettiFrom(el, 40); sparkle(); };
@@ -35,15 +35,15 @@ async function boot() {
   let D;
   try { D = await (await fetch('content.json')).json(); }
   catch (e) { $('#stage').innerHTML = '<p class="card">No se pudo cargar content.json. Abre la página desde GitHub Pages o un servidor local (no con doble clic).</p>'; return; }
-  window.__app = 1;
+  window.__app = 2;
   const M = D.meta;
   setClickSound(U(M.clickSound));
   document.addEventListener('click', click);
   initCursor();
-  ['#logoTop', '#logoEnd'].forEach(s => { $(s).src = U(M.logo); });
-  $('#coverImg').src = U(M.cover); $('#agrImg').src = U(M.agradar); $('#cisternaImg').src = U(M.cisterna); $('#mapImg').src = U(M.mapa);
+  $('#logoEnd').onerror = e => { e.target.hidden = true; }; $('#logoEnd').src = U(M.logo);
+  $('#coverImg').src = U(M.cover); $('#agrImg').src = U(M.agradar); $('#cisternaImg').src = U(M.cisterna);
   initNav(); initTimer(); initControls();
-  $('#goBtn').onclick = e => { confettiFrom(e.currentTarget, 120); fanfare(); setTimeout(() => show(2), 600); };
+  $('#goBtn').onclick = e => { confettiFrom(e.currentTarget, 120); fanfare(); setTimeout(() => show(1), 600); };
   reveal($('#agrBox'));
 
   // Tarjetas de lectura
@@ -84,24 +84,50 @@ async function boot() {
   };
   $('#showAll').onclick = e => { document.querySelectorAll('#cmp .rv').forEach(x => x.classList.add('unblur')); confettiFrom(e.currentTarget, 50); cheer(); };
 
-  // Mapa
+  // Mapa interactivo (Leaflet)
+  const COLORS = ['#e6194b','#3cb44b','#f58231','#4363d8','#911eb4','#0e9aa7','#c9a400','#f032e6','#808000','#008080','#9a6324','#e07b91','#800000','#5b8c00','#000075','#2d9cdb','#7d3cff','#d2691e'];
   inits['s-map'] = () => {
-    const P = D.map, chips = $('#mchips'), grid = $('#rgrid'), det = $('#rdet'); chips.innerHTML = grid.innerHTML = ''; det.className = 'card rev';
-    $('#mapIntro').textContent = P.intro; $('#mapDisc').textContent = P.disc; $('#mapWrap').classList.remove('zoom');
-    const col = k => P.conf.find(c => c.k === k);
-    const draw = f => { grid.innerHTML = ''; P.regions.filter(r => !f || r.k === f).forEach(r => {
-      const c = col(r.k), b = h('button', 'opt tone' + (r.n % 5), `<span class="dot" style="background:${c.c}"></span><b>${r.n}. ${r.name}</b><br><small>${r.v}</small>`);
-      b.onclick = () => { grid.querySelectorAll('.opt').forEach(x => x.classList.remove('sel')); b.classList.add('sel', 'seen'); sparkle(); det.className = 'card rev on tone' + (r.n % 5);
-        det.innerHTML = `<h3>${r.n}. ${r.name}</h3><p><b>Referencia:</b> ${r.v}</p><p><b>Ubicación actual aproximada:</b> ${r.m}</p><p><span class="dot" style="background:${c.c}"></span><b>${c.l}</b></p><p>${r.t}</p>`; };
-      grid.append(b); }); };
-    [{ k: '', l: 'Todas', c: '#9589EB' }, ...P.conf].forEach((c, i) => {
-      const b = h('button', 'chip' + (i === 0 ? ' on' : ''), `<span class="dot" style="background:${c.c}"></span>${c.l}`);
-      b.onclick = () => { chips.querySelectorAll('.chip').forEach(x => x.classList.remove('on')); b.classList.add('on'); draw(c.k); sparkle(); };
+    const P = D.map, list = $('#rlist'), det = $('#rdet'), chips = $('#mchips'), box = $('#map');
+    list.innerHTML = chips.innerHTML = ''; det.className = 'card rev';
+    $('#mapIntro').textContent = P.intro; $('#mapDisc').textContent = P.disc;
+    if (mapObj) { mapObj.remove(); mapObj = null; }
+    box.innerHTML = '';
+    const col = k => P.conf.find(c => c.k === k), layers = {}, items = {};
+    const hl = (n, on) => { layers[n]?.setStyle({ fillOpacity: on ? .7 : .28, weight: on ? 4 : 1.5 }); if (on) layers[n]?.bringToFront(); items[n]?.classList.toggle('hl', on); };
+    const select = n => {
+      const r = P.regions.find(x => x.n === n), c = col(r.k);
+      Object.values(items).forEach(x => x.classList.remove('sel')); items[n].classList.add('sel'); sparkle();
+      det.className = 'card rev on tone' + (n % 5);
+      det.innerHTML = `<h3>${r.n}. ${r.name}</h3><p><b>Referencia:</b> ${r.v}</p><p><b>Ubicación actual aproximada:</b> ${r.m}</p><p><span class="dot" style="background:${c.c}"></span><b>${c.l}</b></p><p>${r.t}</p>` + (r.p ? '' : '<p class="note">📍 No se marca en el mapa porque su ubicación no es segura.</p>');
+      if (layers[n] && mapObj) mapObj.flyToBounds(layers[n].getBounds().pad(.6), { maxZoom: 8 });
+    };
+    P.regions.forEach(r => {
+      const it = h('button', 'ritem' + (r.p ? '' : ' noloc'), `<span class="dot" style="background:${COLORS[r.n - 1]}"></span><b>${r.n}. ${r.name}</b><br><small>${r.v}${r.p ? '' : ' · sin ubicación'}</small>`);
+      it.onmouseenter = () => hl(r.n, true); it.onmouseleave = () => hl(r.n, false); it.onfocus = () => hl(r.n, true); it.onblur = () => hl(r.n, false);
+      it.onclick = () => select(r.n); items[r.n] = it; list.append(it);
+    });
+    if (!window.L) { box.innerHTML = '<p class="card">⚠ No se pudo cargar el mapa (Leaflet). Revisa la conexión a internet.</p>'; return; }
+    const map = mapObj = L.map(box, { minZoom: 4, maxZoom: 11, scrollWheelZoom: false }).setView(P.view, 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 11, attribution: '&copy; Colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(map);
+    const gReg = L.layerGroup().addTo(map), gCtry = L.layerGroup().addTo(map), gCity = L.layerGroup().addTo(map);
+    [...P.regions].filter(r => r.p).sort((a, b) => b.r - a.r).forEach(r => {
+      const c = COLORS[r.n - 1];
+      const circ = L.circle(r.p, { radius: r.r * 1000, color: c, fillColor: c, fillOpacity: .28, weight: 1.5 }).addTo(gReg);
+      circ.bindTooltip(`<b>${r.n}. ${r.name}</b><br>${r.v}`, { sticky: true });
+      const num = L.marker(r.p, { icon: L.divIcon({ className: 'rnum', html: String(r.n), iconSize: [24, 24] }) }).addTo(gReg);
+      num.bindTooltip(`<b>${r.n}. ${r.name}</b><br>${r.v}`);
+      layers[r.n] = circ;
+      [circ, num].forEach(x => { x.on('mouseover', () => hl(r.n, true)); x.on('mouseout', () => hl(r.n, false)); x.on('click', () => select(r.n)); });
+    });
+    P.ctry.forEach(c => L.marker(c.p, { icon: L.divIcon({ className: 'ctry', html: c.n, iconSize: [120, 16], iconAnchor: [60, 8] }), interactive: false }).addTo(gCtry));
+    P.cities.forEach(c => L.circleMarker(c.p, { radius: 4, color: '#1c2347', weight: 1, fillColor: '#fff', fillOpacity: 1 }).bindTooltip(c.n).addTo(gCity));
+    [['Regiones bíblicas', gReg], ['Países actuales', gCtry], ['Ciudades', gCity]].forEach(([l, g]) => {
+      const b = h('button', 'chip on', l);
+      b.onclick = () => { const on = !b.classList.contains('on'); b.classList.toggle('on', on); on ? map.addLayer(g) : map.removeLayer(g); sparkle(); };
       chips.append(b);
     });
-    draw('');
+    const all = h('button', 'chip', '🔄 Ver todo el mapa'); all.onclick = () => { map.setView(P.view, 5); sparkle(); }; chips.append(all);
   };
-  $('#mapWrap').onclick = () => $('#mapWrap').classList.toggle('zoom');
 
   inits['s-tf'] = () => mkTF('#tf', D.tf, ['Verdadero', 'Falso']);
 
@@ -165,6 +191,7 @@ function show(n) {
   $('#bar').style.width = ((cur + 1) / sections.length * 100) + '%';
   const s = sections[cur]; $('#label').textContent = `${cur + 1}/${sections.length} · ${s.dataset.title} · ${s.dataset.time}`;
   $('#stage').scrollTop = 0;
+  if (s.id === 's-map' && mapObj) setTimeout(() => mapObj.invalidateSize(), 80);
 }
 function initNav() {
   sections.forEach((s, i) => { const d = h('i'); d.title = s.dataset.title; d.onclick = () => show(i); $('#dots').append(d); });
