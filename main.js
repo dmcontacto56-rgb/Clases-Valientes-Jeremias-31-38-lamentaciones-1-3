@@ -1,4 +1,4 @@
-import { setClickSound, click, cheer, fanfare, giggle, sparkle, oops, setMuted, isMuted } from './audio.js?v=2';
+import { setClickSound, click, cheer, fanfare, giggle, sparkle, oops, setMuted, isMuted } from './audio.js?v=3';
 import { confettiFrom, shake } from './effects.js?v=2';
 import { initCursor } from './cursor.js?v=2';
 
