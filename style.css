@@ -60,7 +60,7 @@ section.center,#s-cover{text-align:center}
 body.calm *{animation:none!important;transition:none!important}
 
 /* ---- v4 ---- */
-:root{--v:2}
+:root{--v:3}
 .tone0{--c1:#0887F5;--c2:#24B5EF;background:linear-gradient(135deg,#e6f2ff,#cfe5ff);border-color:#7CB8F0}
 .tone1{--c1:#a850d6;--c2:#C97BF0;background:linear-gradient(135deg,#f8eaff,#ecd5ff);border-color:#C97BF0}
 .tone2{--c1:#6f62d6;--c2:#9589EB;background:linear-gradient(135deg,#eeebff,#dcd7ff);border-color:#9589EB}
@@ -137,3 +137,4 @@ button.week.lit .spark{filter:none;opacity:1;animation:pop .6s}
 .rnum{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #1c2347;color:#1c2347;font:800 12px/20px var(--f-body);text-align:center}
 .ctry{font:800 11px/16px var(--f-body);color:#1c2347;opacity:.6;text-transform:uppercase;letter-spacing:.06em;text-align:center;text-shadow:0 0 3px #fff,0 0 3px #fff;white-space:nowrap}
 @media (max-width:800px){.mapLayout{grid-template-columns:1fr}.rlist{max-height:none}.mapbox{height:52vh}}
+.ctry{font:800 12px/16px var(--f-body);opacity:.9;color:#14233f;letter-spacing:.05em}
