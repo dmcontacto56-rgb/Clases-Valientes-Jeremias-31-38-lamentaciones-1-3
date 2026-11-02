@@ -1,6 +1,6 @@
 import { setClickSound, click, cheer, fanfare, giggle, sparkle, oops, setMuted, isMuted } from './audio.js?v=3';
-import { confettiFrom, shake } from './effects.js?v=2';
-import { initCursor } from './cursor.js?v=2';
+import { confettiFrom, shake } from './effects.js?v=3';
+import { initCursor } from './cursor.js?v=3';
 
 const $ = (s, r = document) => r.querySelector(s);
 const h = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
@@ -35,7 +35,7 @@ async function boot() {
   let D;
   try { D = await (await fetch('content.json')).json(); }
   catch (e) { $('#stage').innerHTML = '<p class="card">No se pudo cargar content.json. Abre la página desde GitHub Pages o un servidor local (no con doble clic).</p>'; return; }
-  window.__app = 2;
+  window.__app = 3;
   const M = D.meta;
   setClickSound(U(M.clickSound));
   document.addEventListener('click', click);
@@ -85,6 +85,8 @@ async function boot() {
   $('#showAll').onclick = e => { document.querySelectorAll('#cmp .rv').forEach(x => x.classList.add('unblur')); confettiFrom(e.currentTarget, 50); cheer(); };
 
   // Mapa interactivo (Leaflet)
+  const PAIS = { Egypt: ['Egipto', '#ffe3a3'], Israel: ['Israel', '#cfe8ff'], Palestine: ['Palestina', '#bfeacb'], Jordan: ['Jordania', '#f5d0e8'], Lebanon: ['Líbano', '#d9f0a8'], Syria: ['Siria', '#ffd2c4'], Iraq: ['Irak', '#e0d4ff'], Turkey: ['Turquía', '#c9eef2'], 'Saudi Arabia': ['Arabia Saudita', '#fff0b8'], Kuwait: ['Kuwait', '#f9c9d6'], Iran: ['Irán', '#d4e6c8'], Cyprus: ['Chipre', '#ffe0f0'], 'Northern Cyprus': ['Chipre', '#ffe0f0'],
+    Libya: ['Libia'], Sudan: ['Sudán'], Greece: ['Grecia'], Armenia: ['Armenia'], Georgia: ['Georgia'], Azerbaijan: ['Azerbaiyán'], Turkmenistan: ['Turkmenistán'], Yemen: ['Yemen'], Oman: ['Omán'], 'United Arab Emirates': ['Emiratos Árabes Unidos'], Qatar: ['Catar'], Afghanistan: ['Afganistán'], Pakistan: ['Pakistán'], Eritrea: ['Eritrea'], Bulgaria: ['Bulgaria'], Russia: ['Rusia'], Kazakhstan: ['Kazajistán'] };
   const COLORS = ['#e6194b','#3cb44b','#f58231','#4363d8','#911eb4','#0e9aa7','#c9a400','#f032e6','#808000','#008080','#9a6324','#e07b91','#800000','#5b8c00','#000075','#2d9cdb','#7d3cff','#d2691e'];
   inits['s-map'] = () => {
     const P = D.map, list = $('#rlist'), det = $('#rdet'), chips = $('#mchips'), box = $('#map');
@@ -121,6 +123,16 @@ async function boot() {
     });
     P.ctry.forEach(c => L.marker(c.p, { icon: L.divIcon({ className: 'ctry', html: c.n, iconSize: [120, 16], iconAnchor: [60, 8] }), interactive: false }).addTo(gCtry));
     P.cities.forEach(c => L.circleMarker(c.p, { radius: 4, color: '#1c2347', weight: 1, fillColor: '#fff', fillOpacity: 1 }).bindTooltip(c.n).addTo(gCity));
+    if (P.geo) fetch(P.geo).then(r => r.json()).then(g => {
+      const geo = L.geoJSON(g, {
+        filter: f => PAIS[f.properties.ADMIN],
+        style: f => ({ color: '#5a6a8a', weight: 1.3, fillColor: PAIS[f.properties.ADMIN][1] || '#eceff5', fillOpacity: PAIS[f.properties.ADMIN][1] ? .75 : .55 }),
+        onEachFeature: (f, ly) => {
+          ly.bindTooltip('<b>' + PAIS[f.properties.ADMIN][0] + '</b> (frontera actual)', { sticky: true });
+          ly.on('mouseover', () => ly.setStyle({ weight: 3, fillOpacity: .95 })); ly.on('mouseout', () => geo.resetStyle(ly));
+        }
+      }).addTo(gCtry); geo.bringToBack();
+    }).catch(() => console.warn('No se pudieron cargar las fronteras de los países'));
     [['Regiones bíblicas', gReg], ['Países actuales', gCtry], ['Ciudades', gCity]].forEach(([l, g]) => {
       const b = h('button', 'chip on', l);
       b.onclick = () => { const on = !b.classList.contains('on'); b.classList.toggle('on', on); on ? map.addLayer(g) : map.removeLayer(g); sparkle(); };
