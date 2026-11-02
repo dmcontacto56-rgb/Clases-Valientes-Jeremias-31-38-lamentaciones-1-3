@@ -569,7 +569,8 @@
           31.2357
         ]
       }
-    ]
+    ],
+    "geo": "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson"
   },
   "tf": [
     {
